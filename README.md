@@ -30,7 +30,7 @@ all.
 
 1. Download `BackupLandingBurnEngines.dll` from the
    [Releases](../../releases) page.
-2. Drop it into `StarshipFactory_Data/../BepInEx/plugins/`.
+2. Drop it into `BepInEx/plugins`.
 3. Launch the game.
 
 ## Notes
