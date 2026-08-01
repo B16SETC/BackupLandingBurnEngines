@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<AssemblyName>BackupLandingBurnEngines</AssemblyName>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+		<TargetFramework>net48</TargetFramework>
+	</PropertyGroup>
+	<PropertyGroup>
+		<LangVersion>latest</LangVersion>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- Game types (VehicleController, EngineController, etc). Point
+		     this at the game's own Managed folder, same as the
+		     Assembly-CSharp.csproj this project sits alongside. -->
+		<Reference Include="Assembly-CSharp">
+			<HintPath>..\StarshipFactory_0.4.9b\StarshipFactory_Data\Managed\Assembly-CSharp.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>..\StarshipFactory_0.4.9b\StarshipFactory_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<!-- BaseUnityPlugin (BepInEx.dll) inherits MonoBehaviour from the
+		     older, non-modular UnityEngine assembly rather than
+		     UnityEngine.CoreModule. We never call anything on this
+		     directly, but the compiler still needs it to resolve the
+		     inheritance chain. This is a thin type-forwarder stub that
+		     should already exist in the same Managed folder. -->
+		<Reference Include="UnityEngine">
+			<HintPath>..\StarshipFactory_0.4.9b\StarshipFactory_Data\Managed\UnityEngine.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+
+		<!-- BepInEx 5.4.23.5 + Harmony. Point these at your BepInEx
+		     install's core folder (typically
+		     StarshipFactory_0.4.9b\BepInEx\core\). Adjust the relative
+		     path below if your folder layout differs. BepInEx 5 ships a
+		     single BepInEx.dll (unlike 6, which splits it into
+		     BepInEx.Core.dll + BepInEx.Unity.Mono.dll). -->
+		<Reference Include="BepInEx">
+			<HintPath>..\StarshipFactory_0.4.9b\BepInEx\core\BepInEx.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="0Harmony">
+			<HintPath>..\StarshipFactory_0.4.9b\BepInEx\core\0Harmony.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+</Project>
