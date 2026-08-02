@@ -7,7 +7,7 @@ internal static class SlotMapping
 	{
 		(1, 7),
 		(2, 10),
-		(3, 1)
+		(3, 4)
 	};
 
 	// Center_N -> slot N, Inner_N -> slot N + 3
