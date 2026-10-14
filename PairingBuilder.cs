@@ -41,16 +41,39 @@ internal static class PairingBuilder
 		{
 			return;
 		}
-		foreach ((int primarySlot, int backupSlot) in SlotMapping.EnginePairingTable)
+		foreach ((int primarySlot, int[][] backupTiers) in SlotMapping.EnginePairingTable)
 		{
-			if (bySlot.TryGetValue(primarySlot, out EngineController primary) && bySlot.TryGetValue(backupSlot, out EngineController backup))
+			if (!bySlot.TryGetValue(primarySlot, out EngineController primary))
 			{
-				state.pairings.Add(new EnginePairing(vehicle, primary, backup));
+				Plugin.Log.LogWarning($"EnginePairing: couldn't find primary engine slot {primarySlot} on {vehicle.prettySerialNumber} -- check parentEnginePos naming (expects Center_N / Inner_N).");
+				continue;
 			}
-			else
+			List<EngineController[]> tiers = new List<EngineController[]>();
+			foreach (int[] tierSlots in backupTiers)
 			{
-				Plugin.Log.LogWarning($"EnginePairing: couldn't find engine slot {primarySlot} or {backupSlot} on {vehicle.prettySerialNumber} -- check parentEnginePos naming (expects Center_N / Inner_N).");
+				List<EngineController> tier = new List<EngineController>();
+				foreach (int candidateSlot in tierSlots)
+				{
+					if (bySlot.TryGetValue(candidateSlot, out EngineController candidate))
+					{
+						tier.Add(candidate);
+					}
+					else
+					{
+						Plugin.Log.LogWarning($"EnginePairing: couldn't find backup engine slot {candidateSlot} (for primary {primarySlot}) on {vehicle.prettySerialNumber}.");
+					}
+				}
+				if (tier.Count > 0)
+				{
+					tiers.Add(tier.ToArray());
+				}
 			}
+			if (tiers.Count == 0)
+			{
+				Plugin.Log.LogWarning($"EnginePairing: no usable backup engines for primary slot {primarySlot} on {vehicle.prettySerialNumber}.");
+				continue;
+			}
+			state.pairings.Add(new EnginePairing(vehicle, primary, tiers.ToArray()));
 		}
 	}
 }

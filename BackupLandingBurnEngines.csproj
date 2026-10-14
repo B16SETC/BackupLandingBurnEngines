@@ -13,11 +13,11 @@
 		     this at the game's own Managed folder, same as the
 		     Assembly-CSharp.csproj this project sits alongside. -->
 		<Reference Include="Assembly-CSharp">
-			<HintPath>..\StarshipFactory_0.4.9b\StarshipFactory_Data\Managed\Assembly-CSharp.dll</HintPath>
+			<HintPath>..\..\StarshipFactory_0.4.9b\StarshipFactory_Data\Managed\Assembly-CSharp.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 		<Reference Include="UnityEngine.CoreModule">
-			<HintPath>..\StarshipFactory_0.4.9b\StarshipFactory_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+			<HintPath>..\..\StarshipFactory_0.4.9b\StarshipFactory_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 		<!-- BaseUnityPlugin (BepInEx.dll) inherits MonoBehaviour from the
@@ -27,7 +27,7 @@
 		     inheritance chain. This is a thin type-forwarder stub that
 		     should already exist in the same Managed folder. -->
 		<Reference Include="UnityEngine">
-			<HintPath>..\StarshipFactory_0.4.9b\StarshipFactory_Data\Managed\UnityEngine.dll</HintPath>
+			<HintPath>..\..\StarshipFactory_0.4.9b\StarshipFactory_Data\Managed\UnityEngine.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 
@@ -38,11 +38,11 @@
 		     single BepInEx.dll (unlike 6, which splits it into
 		     BepInEx.Core.dll + BepInEx.Unity.Mono.dll). -->
 		<Reference Include="BepInEx">
-			<HintPath>..\StarshipFactory_0.4.9b\BepInEx\core\BepInEx.dll</HintPath>
+			<HintPath>..\..\StarshipFactory_0.4.9b\BepInEx\core\BepInEx.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 		<Reference Include="0Harmony">
-			<HintPath>..\StarshipFactory_0.4.9b\BepInEx\core\0Harmony.dll</HintPath>
+			<HintPath>..\..\StarshipFactory_0.4.9b\BepInEx\core\0Harmony.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 	</ItemGroup>
